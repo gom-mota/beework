@@ -2,13 +2,13 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Container } from './styles';
 
-const SignUp = () => {
+const ResetPassword = () => {
     return (
         <Container>
-            <Text>Página para cadastro</Text>
+            <Text>Página para redefinição de senha</Text>
         </Container>
         
     );
 }
 
-export default SignUp;
+export default ResetPassword;
