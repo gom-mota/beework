@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-        flex-direction: row;
-        align-items: center;
+export const ContainerError = styled.View`
+        align-items: flex-start;
+        width: 354px;
 `;
 
 export const Input = styled.TextInput`
@@ -17,6 +17,13 @@ export const TextInput = styled(Input)`
         border-radius: 8;
         margin: 7px;
         elevation: 5; 
+`;
+
+export const ErrorInput = styled.Text`
+        color: #ab2e2e;
+        font-family: 'Roboto_500Medium';
+        font-size: 12px;
+        height:20px;
 `;
 
 export const PasswordInput = styled(Input)`
@@ -34,9 +41,7 @@ export const ContainerPasswordInput = styled.View`
 `;
 
 export const ToggleButton = styled.TouchableOpacity`
-        height: 100%;
-        width: 100%;
-        padding:10px;
+        padding:5px;
         align-items: center;
         flex-direction: row;
 `;

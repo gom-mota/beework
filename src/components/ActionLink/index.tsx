@@ -1,16 +1,19 @@
 import React from 'react';
+
 import { Text, Link, Container } from './styles';
 
-interface ActionLinkProps {
-    link: Function;
+// extends all properties of the core component when using it
+import { TextProps as RNTextProps } from 'react-native';
+
+interface ActionLinkProps extends RNTextProps{
     description?: string;
     text: string;
 }
-const ActionLink: React.FC<ActionLinkProps> = ({link, text, description}) => { 
+const ActionLink: React.FC<ActionLinkProps> = (props) => { 
     return (
         <Container>
-            <Text>{description}</Text>
-            <Link onPress={() => link()}>{text}</Link>
+            <Text>{props.description}</Text>
+            <Link {...props}>{props.text}</Link>
         </Container>
     )
 }

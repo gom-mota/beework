@@ -18,13 +18,13 @@ export const Title = styled.Text`
 `;
 
 export const ContainerTitle = styled.View`
-        padding-bottom: 50px;
+        padding-bottom: 30px;
         align-items:center;
         justify-content: center;
 `;
 
 export const ContainerResetPassword = styled.View`
-        margin-top: 20px;
+        margin-top: 10px;
         margin-bottom: 20px;
         display: flex;
         width:100%;
@@ -32,7 +32,7 @@ export const ContainerResetPassword = styled.View`
 `;
 
 export const ContainerSignUp = styled.View`
-        margin-top: 27px;
+        margin-top: 20px;
 `;
 
 export const Banner = styled.Image`

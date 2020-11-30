@@ -1,31 +1,35 @@
 import React from 'react';
-import { Button, ContainerIcon, Text } from './styles';
+
+import { Button, ButtonSmall, ContainerIcon, Text, TextSmall } from './styles';
+
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-interface ButtonProps {
-    link: Function;
-    text: string;
-    icon: string;
+// extends all properties of the core component when using it
+import { ButtonProps as RNButtonProps } from 'react-native';
+
+interface ButtonProps extends RNButtonProps{
+    title: string;
+    icon?: string;
 }
 
-const ButtonPrimary: React.FC<ButtonProps> = ({link, text, icon}) => { 
+const ButtonPrimary: React.FC<ButtonProps> = (props) => { 
     return (
-        <Button background="#322066" onPress={() => link()}>
+        <Button background="#322066" {...props}>
             <>
-                <Text>{text}</Text>    
+                <Text>{props.title}</Text>    
                 <ContainerIcon>
-                    <Icon name={icon} size={18} color="#ffffff" />
+                    <Icon name={props.icon!=null?props.icon:"hashtag"} size={18} color="#ffffff" />
                 </ContainerIcon>
             </>
         </Button>
     );
 }
 
-const ButtonSecondary = (props:any) => { 
+const ButtonSecondary: React.FC<ButtonProps> = (props) => { 
     return (
-        <Button background="#00f">
-            <Text>{props.children}</Text>            
-        </Button>
+        <ButtonSmall background="#322066" {...props}>
+            <TextSmall>{props.title}</TextSmall>
+        </ButtonSmall>
     );
 }
 

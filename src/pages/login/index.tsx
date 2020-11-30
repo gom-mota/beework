@@ -1,13 +1,18 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native'
-import { Container, Title, ContainerResetPassword, ContainerSignUp, ContainerTitle, Banner } from './styles';
+
+import { Container, Title, ContainerTitle, ContainerResetPassword, 
+        ContainerSignUp, Banner } from './styles';
+import BannerImg from '../../assets/images/banner.png';
+
 import { ButtonPrimary } from '../../components/Button';
 import ActionLink from '../../components/ActionLink';
 import Input from '../../components/Input';
-import BannerImg from '../../assets/images/banner.png';
+
 import { Alert } from "react-native";
 
-
+import { useFormik } from "formik";
+import * as Yup from 'yup';
 
 const Login = () => {
 
@@ -21,42 +26,79 @@ const Login = () => {
     navigate('ResetPassword')
   }
 
-  function handleNavigateToHome() {
+  function handleNavigateToHome(values:any) {
     Alert.alert(
-      "Ops!",
-      "A validação está em desenvolvimento.",
+      `Dados para autenticação: `,
+      JSON.stringify(values, null, 2),
       [
         { text: "OK" }
       ]
     );
   }
 
+  interface LoginFormProps {
+    email: string;
+    password: string;
+  }
+
+  // input validations
+  const loginSchema = Yup.object().shape({
+    email: Yup.string().email("Email inválido").required("Preencha o campo"),
+    password: Yup.string().min(8, "A senha deve ter no mínimo 8 caracteres").required("Preencha o campo"),
+  });
+  
+  const initialValues: LoginFormProps = { email: '', password: '' };
+
+  // responsible for creating the form with formik library (Hooks)
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: handleNavigateToHome,
+    validationSchema: loginSchema
+  });
+  
   return (
-    <Container behavior="padding">  
+    <Container behavior="padding" > 
 
       <ContainerTitle>
         <Banner source={BannerImg} />
         <Title>BeeWork</Title>
       </ContainerTitle>
 
-      <Input type="text" tip="Seu endereço de email" />
-      <Input type="password" tip="Senha" />
+      <Input 
+        type="text"
+        tip="Seu endereço de email" 
+        onChangeText={formik.handleChange("email")}
+        onBlur={formik.handleBlur("email")}
+        value={formik.values.email}
+        touched={formik.touched.email}
+        error={formik.errors.email}
+      />
+      <Input 
+        type="password"
+        tip="Senha"
+        onChangeText={formik.handleChange("password")}
+        onBlur={formik.handleBlur("password")}
+        value={formik.values.password}
+        touched={formik.touched.password}
+        error={formik.errors.password}
+      />
 
       <ContainerResetPassword>
         <ActionLink
             text="Redefinir senha"
             description="Esqueceu a senha?" 
-            link={handleNavigateToResetPassword} />
+            onPress={handleNavigateToResetPassword} />
       </ContainerResetPassword>
 
-      <ButtonPrimary text="Entrar" icon="arrow-right" link={handleNavigateToHome} />
-
+      <ButtonPrimary title="Entrar" icon="arrow-right" {...formik.isSubmitting} onPress={() => formik.handleSubmit()} />
+      
       <ContainerSignUp>
         <ActionLink
             text="Cadastre-se"
             description="Não tem uma conta?"
-            link={handleNavigateToSignUpPage} />
+            onPress={handleNavigateToSignUpPage} />
       </ContainerSignUp>
+
     </Container>
   );
 }

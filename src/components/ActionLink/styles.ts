@@ -20,4 +20,4 @@ export const Container = styled.View`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    `;
+`;
