@@ -39,3 +39,7 @@ export const TextSmall = styled.Text`
 export const ContainerIcon = styled.View`
     margin-left: 220px;
 `;
+
+export const Container = styled.View`
+    margin:22px;
+`;

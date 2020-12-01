@@ -36,19 +36,29 @@ const Input: React.FC<InputProps> = (props) => {
                         <Icon name={passwordToggleIcon} size={22} color="#4f4f4f" />
                     </ToggleButton>
                 </ContainerPasswordInput>
-                <ContainerError>
-                    <ErrorInput>{props.touched && props.error}</ErrorInput>
-                </ContainerError>
+                
+                {
+                    props.touched && props.error != null ? 
+                        <ContainerError>
+                            <ErrorInput>{props.touched && props.error}</ErrorInput>
+                        </ContainerError>
+                    : null
+                }
             </>
         )
     }
     else{
         return(       
-            <>     
-                <ContainerError>
-                    <ErrorInput>{props.touched && props.error}</ErrorInput>
-                </ContainerError>
-                <TextInput placeholder={props.tip} {...props} />   
+            <>
+                <TextInput placeholder={props.tip} {...props} /> 
+                
+                {
+                    props.touched && props.error != null ? 
+                        <ContainerError>
+                            <ErrorInput>{props.touched && props.error}</ErrorInput>
+                        </ContainerError>
+                    : null
+                }
             </>
         )
     }

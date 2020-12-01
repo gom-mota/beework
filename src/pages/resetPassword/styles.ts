@@ -1,8 +1,10 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-    flex:1;
-    background-color: #F7F8FE;
-    align-items: center;
-    justify-content: center;
+export const Description = styled.Text`
+    font-family: 'Roboto_500Medium';
+    color: #322066;
+    font-size: 20px;
+    width: 354px;
+    margin-bottom: 30px;
+    line-height: 30px;
 `;

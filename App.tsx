@@ -9,25 +9,26 @@ import { Inter_600SemiBold } from '@expo-google-fonts/inter';
 import AppStack from './src/routes/AppStack';
 
 const App = () => {
-
-  let [fontsLoaded] = useFonts({
-    MPLUSRounded1c_400Regular,
-    MPLUSRounded1c_700Bold,
-    Roboto_400Regular,
-    Roboto_500Medium,
-    Inter_600SemiBold
-  });
-
-  if(!fontsLoaded){
-    return <AppLoading />
-  } else {
-      return (
-        <>
-          <AppStack />
-          <StatusBar style="auto" />
-        </>
-      );
-    }
+	
+	let [fontsLoaded] = useFonts({
+		MPLUSRounded1c_400Regular,
+		MPLUSRounded1c_700Bold,
+		Roboto_400Regular,
+		Roboto_500Medium,
+		Inter_600SemiBold
+	});
+	
+	if(!fontsLoaded){
+		return <AppLoading />
+	} 
+	else {
+		return (
+			<>
+				<AppStack />
+				<StatusBar style="auto" />
+			</>
+		)
+	}
 }
-
+	
 export default App;
