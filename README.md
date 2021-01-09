@@ -23,6 +23,7 @@
 * [Capturas de Tela](#capturas-de-tela)
 * [Tecnologias](#tecnologias)
 * [Status](#status)
+* [Pré-requisitos](#pré-requisitos)
 * [Executar a aplicação](#executar-a-aplicação)
 
 ## Sobre
